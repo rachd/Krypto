@@ -12,6 +12,7 @@
 		CC27DBCE1DAC924C000D644F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCD1DAC924C000D644F /* Assets.xcassets */; };
 		CC27DBD11DAC924C000D644F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */; };
 		CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */; };
+		CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		CC27DBD21DAC924C000D644F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoViewController.h; sourceTree = "<group>"; };
 		CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoViewController.m; sourceTree = "<group>"; };
+		CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoDeck.h; sourceTree = "<group>"; };
+		CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				CC27DBC51DAC924C000D644F /* AppDelegate.m */,
 				CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */,
 				CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */,
+				CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */,
+				CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */,
 				CC27DBCD1DAC924C000D644F /* Assets.xcassets */,
 				CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */,
 				CC27DBD21DAC924C000D644F /* Info.plist */,
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */,
+				CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */,
 				CC27DBC31DAC924C000D644F /* main.m in Sources */,
 				CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */,
 			);
