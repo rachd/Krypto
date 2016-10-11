@@ -35,6 +35,7 @@
     self.targetLabel = [[UILabel alloc] init];
     self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.targetLabel.textAlignment = NSTextAlignmentCenter;
+    self.targetLabel.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.targetLabel];
     
     self.card1 = [[UILabel alloc] init];
@@ -43,6 +44,7 @@
     self.card1.layer.borderColor = [UIColor blackColor].CGColor;
     self.card1.layer.borderWidth = 2.0;
     self.card1.layer.cornerRadius = 6.0;
+    self.card1.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card1];
     
     self.card2 = [[UILabel alloc] init];
@@ -51,6 +53,7 @@
     self.card2.layer.borderColor = [UIColor blackColor].CGColor;
     self.card2.layer.borderWidth = 2.0;
     self.card2.layer.cornerRadius = 6.0;
+    self.card2.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card2];
     
     self.card3 = [[UILabel alloc] init];
@@ -59,6 +62,7 @@
     self.card3.layer.borderColor = [UIColor blackColor].CGColor;
     self.card3.layer.borderWidth = 2.0;
     self.card3.layer.cornerRadius = 6.0;
+    self.card3.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card3];
     
     self.card4 = [[UILabel alloc] init];
@@ -67,6 +71,7 @@
     self.card4.layer.borderColor = [UIColor blackColor].CGColor;
     self.card4.layer.borderWidth = 2.0;
     self.card4.layer.cornerRadius = 6.0;
+    self.card4.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card4];
     
     self.card5 = [[UILabel alloc] init];
@@ -75,6 +80,7 @@
     self.card5.layer.borderColor = [UIColor blackColor].CGColor;
     self.card5.layer.borderWidth = 2.0;
     self.card5.layer.cornerRadius = 6.0;
+    self.card5.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card5];
     
     self.card6 = [[UILabel alloc] init];
@@ -83,6 +89,7 @@
     self.card6.layer.borderColor = [UIColor blackColor].CGColor;
     self.card6.layer.borderWidth = 2.0;
     self.card6.layer.cornerRadius = 6.0;
+    self.card6.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.card6];
     
     self.targetLabel.text = @"Target";
@@ -121,7 +128,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSDictionary *cards = [self.kryptoDeck pickCards];
-    NSLog(@"%@", cards);
+    self.targetLabel.text = [NSString stringWithFormat:@"%@", [cards objectForKey:@"target"]];
 }
 
 - (void)didReceiveMemoryWarning {
