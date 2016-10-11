@@ -10,4 +10,6 @@
 
 @interface RMDKryptoDeck : NSObject
 
+- (NSDictionary *)pickCards;
+
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "RMDKryptoViewController.h"
+#import "RMDKryptoDeck.h"
 
 @interface RMDKryptoViewController ()
+
+@property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 
 @end
 
@@ -17,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor cyanColor];
+    self.kryptoDeck = [[RMDKryptoDeck alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSDictionary *cards = [self.kryptoDeck pickCards];
+    NSLog(@"%@", cards);
 }
 
 - (void)didReceiveMemoryWarning {
