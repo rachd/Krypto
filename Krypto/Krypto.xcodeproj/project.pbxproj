@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC27DBC31DAC924C000D644F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBC21DAC924C000D644F /* main.m */; };
+		CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBC51DAC924C000D644F /* AppDelegate.m */; };
+		CC27DBCE1DAC924C000D644F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCD1DAC924C000D644F /* Assets.xcassets */; };
+		CC27DBD11DAC924C000D644F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */; };
+		CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CC27DBBE1DAC924C000D644F /* Krypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC27DBC21DAC924C000D644F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CC27DBC41DAC924C000D644F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CC27DBC51DAC924C000D644F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CC27DBCD1DAC924C000D644F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC27DBD01DAC924C000D644F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC27DBD21DAC924C000D644F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoViewController.h; sourceTree = "<group>"; };
+		CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC27DBBB1DAC924C000D644F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC27DBB51DAC924C000D644F = {
+			isa = PBXGroup;
+			children = (
+				CC27DBC01DAC924C000D644F /* Krypto */,
+				CC27DBBF1DAC924C000D644F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC27DBBF1DAC924C000D644F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC27DBBE1DAC924C000D644F /* Krypto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC27DBC01DAC924C000D644F /* Krypto */ = {
+			isa = PBXGroup;
+			children = (
+				CC27DBC41DAC924C000D644F /* AppDelegate.h */,
+				CC27DBC51DAC924C000D644F /* AppDelegate.m */,
+				CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */,
+				CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */,
+				CC27DBCD1DAC924C000D644F /* Assets.xcassets */,
+				CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */,
+				CC27DBD21DAC924C000D644F /* Info.plist */,
+				CC27DBC11DAC924C000D644F /* Supporting Files */,
+			);
+			path = Krypto;
+			sourceTree = "<group>";
+		};
+		CC27DBC11DAC924C000D644F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC27DBC21DAC924C000D644F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC27DBBD1DAC924C000D644F /* Krypto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC27DBD51DAC924C000D644F /* Build configuration list for PBXNativeTarget "Krypto" */;
+			buildPhases = (
+				CC27DBBA1DAC924C000D644F /* Sources */,
+				CC27DBBB1DAC924C000D644F /* Frameworks */,
+				CC27DBBC1DAC924C000D644F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Krypto;
+			productName = Krypto;
+			productReference = CC27DBBE1DAC924C000D644F /* Krypto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC27DBB61DAC924C000D644F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = RachelDorn;
+				TargetAttributes = {
+					CC27DBBD1DAC924C000D644F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5NPQDBPA7D;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CC27DBB91DAC924C000D644F /* Build configuration list for PBXProject "Krypto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC27DBB51DAC924C000D644F;
+			productRefGroup = CC27DBBF1DAC924C000D644F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC27DBBD1DAC924C000D644F /* Krypto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC27DBBC1DAC924C000D644F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC27DBD11DAC924C000D644F /* LaunchScreen.storyboard in Resources */,
+				CC27DBCE1DAC924C000D644F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC27DBBA1DAC924C000D644F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */,
+				CC27DBC31DAC924C000D644F /* main.m in Sources */,
+				CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC27DBD01DAC924C000D644F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC27DBD31DAC924C000D644F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CC27DBD41DAC924C000D644F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC27DBD61DAC924C000D644F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5NPQDBPA7D;
+				INFOPLIST_FILE = Krypto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.racheldorn.Krypto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CC27DBD71DAC924C000D644F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5NPQDBPA7D;
+				INFOPLIST_FILE = Krypto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.racheldorn.Krypto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC27DBB91DAC924C000D644F /* Build configuration list for PBXProject "Krypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC27DBD31DAC924C000D644F /* Debug */,
+				CC27DBD41DAC924C000D644F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC27DBD51DAC924C000D644F /* Build configuration list for PBXNativeTarget "Krypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC27DBD61DAC924C000D644F /* Debug */,
+				CC27DBD71DAC924C000D644F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC27DBB61DAC924C000D644F /* Project object */;
+}
