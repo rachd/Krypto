@@ -12,6 +12,13 @@
 @interface RMDKryptoViewController ()
 
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
+@property (nonatomic, strong) UILabel *targetLabel;
+@property (nonatomic, strong) UILabel *card1;
+@property (nonatomic, strong) UILabel *card2;
+@property (nonatomic, strong) UILabel *card3;
+@property (nonatomic, strong) UILabel *card4;
+@property (nonatomic, strong) UILabel *card5;
+@property (nonatomic, strong) UILabel *card6;
 
 @end
 
@@ -21,6 +28,77 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor cyanColor];
     self.kryptoDeck = [[RMDKryptoDeck alloc] init];
+    [self setUpElements];
+}
+
+- (void)setUpElements {
+    self.targetLabel = [[UILabel alloc] init];
+    self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.targetLabel.textAlignment = NSTextAlignmentCenter;
+    self.targetLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.view addSubview:self.targetLabel];
+    
+    self.card1 = [[UILabel alloc] init];
+    self.card1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card1.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card1];
+    
+    self.card2 = [[UILabel alloc] init];
+    self.card2.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card2.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card2];
+    
+    self.card3 = [[UILabel alloc] init];
+    self.card3.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card3.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card3];
+    
+    self.card4 = [[UILabel alloc] init];
+    self.card4.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card4.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card4];
+    
+    self.card5 = [[UILabel alloc] init];
+    self.card5.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card5.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card5];
+    
+    self.card6 = [[UILabel alloc] init];
+    self.card6.translatesAutoresizingMaskIntoConstraints = NO;
+    self.card6.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.card6];
+    
+    self.targetLabel.text = @"Target";
+    self.card3.text = @"3";
+    self.card2.text = @"2";
+    self.card1.text = @"1";
+    self.card5.text = @"5";
+    self.card4.text = @"4";
+    self.card6.text = @"6";
+    
+    
+    UIStackView *innerStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.card1, self.card2, self.card3, self.card4, self.card5, self.card6]];
+    innerStack.translatesAutoresizingMaskIntoConstraints = NO;
+    innerStack.distribution = UIStackViewDistributionFillEqually;
+    [self.view addSubview:innerStack];
+    
+    UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.targetLabel, innerStack]];
+    outerStack.translatesAutoresizingMaskIntoConstraints = NO;
+    outerStack.axis = UILayoutConstraintAxisVertical;
+    outerStack.distribution = UIStackViewDistributionFillEqually;
+    [self.view addSubview:outerStack];
+    
+    NSDictionary *views = @{@"stack": outerStack};
+    NSArray *vert = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[stack]-|"
+                                                            options:0
+                                                            metrics:nil
+                                                              views:views];
+    NSArray *horiz = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[stack]-|"
+                                                             options:0
+                                                             metrics:nil
+                                                               views:views];
+    [self.view addConstraints:vert];
+    [self.view addConstraints:horiz];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
