@@ -126,8 +126,10 @@
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
     self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
     NSArray *cards = [cardDict objectForKey:@"cards"];
+    NSLog(@"%@", cards);
     for (int i = 0; i < 6; i++) {
-        
+        UILabel *label = [self.cardLabels objectAtIndex:i];
+        label.text = [NSString stringWithFormat:@"%@", [cards objectAtIndex:i]];
     }
     
 }
