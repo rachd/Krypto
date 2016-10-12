@@ -26,12 +26,18 @@
 
 - (NSDictionary *)pickCards {
     NSMutableArray *cardCopy = [[NSMutableArray alloc] initWithArray:[self.kryptoCards copy]];
-    NSUInteger index = arc4random_uniform([cardCopy count]) + 1;
+    NSUInteger index = arc4random_uniform([cardCopy count]);
     NSNumber *target = [cardCopy objectAtIndex:index];
     [cardCopy removeObjectAtIndex:index];
-    NSLog(@"%@", cardCopy);
     
-    return @{@"target": target};
+    NSMutableArray *pickedCards = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 6; i++) {
+        NSUInteger index = arc4random_uniform([cardCopy count] - 1) + 1;
+        [pickedCards addObject:[cardCopy objectAtIndex:index]];
+        [cardCopy removeObjectAtIndex:index];
+    }
+    
+    return @{@"target": target, @"cards": pickedCards};
 }
 
 @end

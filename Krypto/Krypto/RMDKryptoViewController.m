@@ -13,12 +13,7 @@
 
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 @property (nonatomic, strong) UILabel *targetLabel;
-@property (nonatomic, strong) UILabel *card1;
-@property (nonatomic, strong) UILabel *card2;
-@property (nonatomic, strong) UILabel *card3;
-@property (nonatomic, strong) UILabel *card4;
-@property (nonatomic, strong) UILabel *card5;
-@property (nonatomic, strong) UILabel *card6;
+@property (nonatomic, strong) NSArray *cardLabels;
 
 @end
 
@@ -38,70 +33,71 @@
     self.targetLabel.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.targetLabel];
     
-    self.card1 = [[UILabel alloc] init];
-    self.card1.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card1.textAlignment = NSTextAlignmentCenter;
-    self.card1.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card1.layer.borderWidth = 2.0;
-    self.card1.layer.cornerRadius = 6.0;
-    self.card1.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card1];
+    UILabel *card1 = [[UILabel alloc] init];
+    card1.translatesAutoresizingMaskIntoConstraints = NO;
+    card1.textAlignment = NSTextAlignmentCenter;
+    card1.layer.borderColor = [UIColor blackColor].CGColor;
+    card1.layer.borderWidth = 2.0;
+    card1.layer.cornerRadius = 6.0;
+    card1.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card1];
     
-    self.card2 = [[UILabel alloc] init];
-    self.card2.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card2.textAlignment = NSTextAlignmentCenter;
-    self.card2.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card2.layer.borderWidth = 2.0;
-    self.card2.layer.cornerRadius = 6.0;
-    self.card2.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card2];
+    UILabel *card2 = [[UILabel alloc] init];
+    card2.translatesAutoresizingMaskIntoConstraints = NO;
+    card2.textAlignment = NSTextAlignmentCenter;
+    card2.layer.borderColor = [UIColor blackColor].CGColor;
+    card2.layer.borderWidth = 2.0;
+    card2.layer.cornerRadius = 6.0;
+    card2.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card2];
     
-    self.card3 = [[UILabel alloc] init];
-    self.card3.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card3.textAlignment = NSTextAlignmentCenter;
-    self.card3.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card3.layer.borderWidth = 2.0;
-    self.card3.layer.cornerRadius = 6.0;
-    self.card3.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card3];
+    UILabel *card3 = [[UILabel alloc] init];
+    card3.translatesAutoresizingMaskIntoConstraints = NO;
+    card3.textAlignment = NSTextAlignmentCenter;
+    card3.layer.borderColor = [UIColor blackColor].CGColor;
+    card3.layer.borderWidth = 2.0;
+    card3.layer.cornerRadius = 6.0;
+    card3.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card3];
     
-    self.card4 = [[UILabel alloc] init];
-    self.card4.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card4.textAlignment = NSTextAlignmentCenter;
-    self.card4.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card4.layer.borderWidth = 2.0;
-    self.card4.layer.cornerRadius = 6.0;
-    self.card4.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card4];
+    UILabel *card4 = [[UILabel alloc] init];
+    card4.translatesAutoresizingMaskIntoConstraints = NO;
+    card4.textAlignment = NSTextAlignmentCenter;
+    card4.layer.borderColor = [UIColor blackColor].CGColor;
+    card4.layer.borderWidth = 2.0;
+    card4.layer.cornerRadius = 6.0;
+    card4.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card4];
     
-    self.card5 = [[UILabel alloc] init];
-    self.card5.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card5.textAlignment = NSTextAlignmentCenter;
-    self.card5.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card5.layer.borderWidth = 2.0;
-    self.card5.layer.cornerRadius = 6.0;
-    self.card5.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card5];
+    UILabel *card5 = [[UILabel alloc] init];
+    card5.translatesAutoresizingMaskIntoConstraints = NO;
+    card5.textAlignment = NSTextAlignmentCenter;
+    card5.layer.borderColor = [UIColor blackColor].CGColor;
+    card5.layer.borderWidth = 2.0;
+    card5.layer.cornerRadius = 6.0;
+    card5.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card5];
     
-    self.card6 = [[UILabel alloc] init];
-    self.card6.translatesAutoresizingMaskIntoConstraints = NO;
-    self.card6.textAlignment = NSTextAlignmentCenter;
-    self.card6.layer.borderColor = [UIColor blackColor].CGColor;
-    self.card6.layer.borderWidth = 2.0;
-    self.card6.layer.cornerRadius = 6.0;
-    self.card6.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:self.card6];
+    UILabel *card6 = [[UILabel alloc] init];
+    card6.translatesAutoresizingMaskIntoConstraints = NO;
+    card6.textAlignment = NSTextAlignmentCenter;
+    card6.layer.borderColor = [UIColor blackColor].CGColor;
+    card6.layer.borderWidth = 2.0;
+    card6.layer.cornerRadius = 6.0;
+    card6.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:card6];
     
-    self.targetLabel.text = @"Target";
-    self.card3.text = @"3";
-    self.card2.text = @"2";
-    self.card1.text = @"1";
-    self.card5.text = @"5";
-    self.card4.text = @"4";
-    self.card6.text = @"6";
+    self.cardLabels = @[card1, card2, card3, card4, card5, card6];
+    
+    card1.text = @"1";
+    card2.text = @"2";
+    card3.text = @"3";
+    card4.text = @"4";
+    card5.text = @"5";
+    card6.text = @"6";
     
     
-    UIStackView *innerStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.card1, self.card2, self.card3, self.card4, self.card5, self.card6]];
+    UIStackView *innerStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
     innerStack.translatesAutoresizingMaskIntoConstraints = NO;
     innerStack.distribution = UIStackViewDistributionFillEqually;
     innerStack.spacing = 20;
@@ -127,8 +123,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSDictionary *cards = [self.kryptoDeck pickCards];
-    self.targetLabel.text = [NSString stringWithFormat:@"%@", [cards objectForKey:@"target"]];
+    NSDictionary *cardDict = [self.kryptoDeck pickCards];
+    self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
+    NSArray *cards = [cardDict objectForKey:@"cards"];
+    for (int i = 0; i < 6; i++) {
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
