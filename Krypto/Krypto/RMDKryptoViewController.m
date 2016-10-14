@@ -14,6 +14,7 @@
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 @property (nonatomic, strong) UILabel *targetLabel;
 @property (nonatomic, strong) NSArray *cardLabels;
+@property (nonatomic, strong) UIButton *resetButton;
 
 @end
 
@@ -89,21 +90,22 @@
     
     self.cardLabels = @[card1, card2, card3, card4, card5, card6];
     
-    card1.text = @"1";
-    card2.text = @"2";
-    card3.text = @"3";
-    card4.text = @"4";
-    card5.text = @"5";
-    card6.text = @"6";
+    self.resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.resetButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+    [self.view addSubview:self.resetButton];
     
+    UIStackView *bottomStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
+    bottomStack.translatesAutoresizingMaskIntoConstraints = NO;
+    bottomStack.distribution = UIStackViewDistributionFillEqually;
+    bottomStack.spacing = 20;
+    [self.view addSubview:bottomStack];
     
-    UIStackView *innerStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
-    innerStack.translatesAutoresizingMaskIntoConstraints = NO;
-    innerStack.distribution = UIStackViewDistributionFillEqually;
-    innerStack.spacing = 20;
-    [self.view addSubview:innerStack];
+    UIStackView *topStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.resetButton, self.targetLabel]];
+    topStack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:topStack];
     
-    UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.targetLabel, innerStack]];
+    UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, bottomStack]];
     outerStack.translatesAutoresizingMaskIntoConstraints = NO;
     outerStack.axis = UILayoutConstraintAxisVertical;
     outerStack.distribution = UIStackViewDistributionFillEqually;
