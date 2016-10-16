@@ -14,8 +14,7 @@
 
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 @property (nonatomic, strong) RMDKryptoView *kryptoView;
-@property (nonatomic, strong) NSTimer *mainTimer;
-@property (nonatomic) NSTimeInterval secondsRemaining;
+@property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
 
 @end
@@ -33,6 +32,10 @@
     [self setCards];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self startTimer];
+}
+
 - (void)setCards {
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
     self.kryptoView.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
@@ -42,6 +45,31 @@
         label.text = [NSString stringWithFormat:@"%@", [cards objectAtIndex:i]];
     }
 }
+
+- (void)startTimer {
+    self.secondsTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                         target:self
+                                                       selector:@selector(updateLabel)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+- (void)stopTimer {
+    [self.secondsTimer invalidate];
+}
+
+- (void)updateLabel {
+    self.secondsElapsed ++;
+    self.kryptoView.countdownLabel.text = [self formatTime:self.secondsElapsed];
+}
+
+- (NSString *)formatTime:(int)totalSeconds {
+    int hours = totalSeconds / 3600;
+    int minutes = (totalSeconds / 60) % 60;
+    int seconds = totalSeconds % 60;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

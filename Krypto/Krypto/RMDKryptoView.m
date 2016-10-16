@@ -78,7 +78,7 @@
         self.countdownLabel = [[UILabel alloc] init];
         self.countdownLabel.textAlignment = NSTextAlignmentCenter;
         self.countdownLabel.font = [UIFont systemFontOfSize:30];
-        self.countdownLabel.text = [self formatTime:0];
+        self.countdownLabel.text = @"00:00:00";
         [self addSubview:self.countdownLabel];
         
         self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -125,13 +125,6 @@
         [self addConstraints:horiz];
     }
     return self;
-}
-
-- (NSString *)formatTime:(int)totalSeconds {
-    int hours = totalSeconds / 3600;
-    int minutes = (totalSeconds / 60) % 60;
-    int seconds = totalSeconds % 60;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 
 @end
