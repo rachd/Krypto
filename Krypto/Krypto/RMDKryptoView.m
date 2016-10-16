@@ -74,6 +74,12 @@
         card6.layer.cornerRadius = 6.0;
         card6.font = [UIFont systemFontOfSize:40];
         [self addSubview:card6];
+        
+        self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.doneButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.doneButton addTarget:self.delegate action:@selector(stopTimer) forControlEvents:UIControlEventTouchUpInside];
+        [self.doneButton setTitle:@"Krypto!" forState:UIControlStateNormal];
+        [self addSubview:self.doneButton];
     
         self.cardLabels = @[card1, card2, card3, card4, card5, card6];
     
@@ -93,7 +99,7 @@
         topStack.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:topStack];
     
-        UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, bottomStack]];
+        UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, bottomStack, self.doneButton]];
         outerStack.translatesAutoresizingMaskIntoConstraints = NO;
         outerStack.axis = UILayoutConstraintAxisVertical;
         outerStack.distribution = UIStackViewDistributionFillEqually;

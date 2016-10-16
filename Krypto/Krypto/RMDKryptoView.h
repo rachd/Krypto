@@ -12,6 +12,7 @@
 
 @required
 - (void)setCards;
+- (void)stopTimer;
 
 @end
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSArray *cardLabels;
 @property (nonatomic, strong) UIButton *resetButton;
 @property (nonatomic, strong) UILabel *timerLabel;
+@property (nonatomic, strong) UIButton *doneButton;
 @property (nonatomic, weak) id <RMDKryptoViewDelegate> delegate;
 
 @end
