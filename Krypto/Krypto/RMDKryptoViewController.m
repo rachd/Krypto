@@ -14,6 +14,9 @@
 
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 @property (nonatomic, strong) RMDKryptoView *kryptoView;
+@property (nonatomic, strong) NSTimer *mainTimer;
+@property (nonatomic) NSTimeInterval secondsRemaining;
+@property (nonatomic, strong) NSTimer *secondsTimer;
 
 @end
 

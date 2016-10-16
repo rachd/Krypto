@@ -75,6 +75,12 @@
         card6.font = [UIFont systemFontOfSize:40];
         [self addSubview:card6];
         
+        self.countdownLabel = [[UILabel alloc] init];
+        self.countdownLabel.textAlignment = NSTextAlignmentCenter;
+        self.countdownLabel.font = [UIFont systemFontOfSize:30];
+        self.countdownLabel.text = [self formatTime:0];
+        [self addSubview:self.countdownLabel];
+        
         self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
         self.doneButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self.doneButton addTarget:self.delegate action:@selector(stopTimer) forControlEvents:UIControlEventTouchUpInside];
@@ -95,8 +101,9 @@
         bottomStack.spacing = 20;
         [self addSubview:bottomStack];
     
-        UIStackView *topStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.resetButton, self.targetLabel]];
+        UIStackView *topStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.resetButton, self.targetLabel, self.countdownLabel]];
         topStack.translatesAutoresizingMaskIntoConstraints = NO;
+        topStack.distribution = UIStackViewDistributionFillEqually;
         [self addSubview:topStack];
     
         UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, bottomStack, self.doneButton]];
@@ -118,6 +125,13 @@
         [self addConstraints:horiz];
     }
     return self;
+}
+
+- (NSString *)formatTime:(int)totalSeconds {
+    int hours = totalSeconds / 3600;
+    int minutes = (totalSeconds / 60) % 60;
+    int seconds = totalSeconds % 60;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 
 @end
