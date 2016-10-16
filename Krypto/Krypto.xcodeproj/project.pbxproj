@@ -13,6 +13,7 @@
 		CC27DBD11DAC924C000D644F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */; };
 		CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */; };
 		CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */; };
+		CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA767661DB188F200E51B9F /* RMDKryptoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoViewController.m; sourceTree = "<group>"; };
 		CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoDeck.h; sourceTree = "<group>"; };
 		CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoDeck.m; sourceTree = "<group>"; };
+		CCA767651DB188F200E51B9F /* RMDKryptoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoView.h; sourceTree = "<group>"; };
+		CCA767661DB188F200E51B9F /* RMDKryptoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			children = (
 				CC27DBC41DAC924C000D644F /* AppDelegate.h */,
 				CC27DBC51DAC924C000D644F /* AppDelegate.m */,
+				CCA767651DB188F200E51B9F /* RMDKryptoView.h */,
+				CCA767661DB188F200E51B9F /* RMDKryptoView.m */,
 				CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */,
 				CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */,
 				CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */,
@@ -154,6 +159,7 @@
 			files = (
 				CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */,
 				CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */,
+				CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */,
 				CC27DBC31DAC924C000D644F /* main.m in Sources */,
 				CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */,
 			);
@@ -304,6 +310,7 @@
 				CC27DBD71DAC924C000D644F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

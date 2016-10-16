@@ -10,4 +10,6 @@
 
 @interface RMDKryptoViewController : UIViewController
 
+- (void)setCards;
+
 @end
