@@ -11,7 +11,7 @@
 @protocol RMDKryptoViewDelegate <NSObject>
 
 @required
-- (void)setCards;
+- (void)reset;
 - (void)stopTimer;
 
 @end

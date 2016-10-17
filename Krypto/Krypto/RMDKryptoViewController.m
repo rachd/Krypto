@@ -46,6 +46,14 @@
     }
 }
 
+- (void)reset {
+    [self.secondsTimer invalidate];
+    self.kryptoView.countdownLabel.text = @"00:00:00";
+    self.secondsElapsed = 0;
+    [self setCards];
+    [self startTimer];
+}
+
 - (void)startTimer {
     self.secondsTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                          target:self

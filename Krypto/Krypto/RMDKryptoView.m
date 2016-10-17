@@ -92,7 +92,7 @@
         self.resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
         self.resetButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
-        [self.resetButton addTarget:self.delegate action:@selector(setCards) forControlEvents:UIControlEventTouchUpInside];
+        [self.resetButton addTarget:self.delegate action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.resetButton];
     
         UIStackView *bottomStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
