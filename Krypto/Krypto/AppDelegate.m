@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "RMDKryptoViewController.h"
+#import "RMDHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    RMDKryptoViewController *kryptoVC = [[RMDKryptoViewController alloc] init];
-    [self.window setRootViewController:kryptoVC];
+    RMDHomeViewController *homeVC = [[RMDHomeViewController alloc] init];
+    [self.window setRootViewController:homeVC];
     [self.window makeKeyAndVisible];
     return YES;
 }
