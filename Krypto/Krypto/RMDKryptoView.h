@@ -13,6 +13,7 @@
 @required
 - (void)reset;
 - (void)stopTimer;
+- (void)returnToLobby;
 
 @end
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) UILabel *timerLabel;
 @property (nonatomic, strong) UIButton *doneButton;
 @property (nonatomic, strong) UILabel *countdownLabel;
+@property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, weak) id <RMDKryptoViewDelegate> delegate;
 
 @end

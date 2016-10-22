@@ -102,14 +102,27 @@
 //        self.resetButton.layer.borderWidth = 2.0;
         [self.resetButton addTarget:self.delegate action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.resetButton];
+        
+        self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.backButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.backButton setTitle:@"Back" forState:UIControlStateNormal];
+        [self.backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.backButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        [self.backButton addTarget:self.delegate action:@selector(returnToLobby) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.backButton];
     
         UIStackView *bottomStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
         bottomStack.translatesAutoresizingMaskIntoConstraints = NO;
         bottomStack.distribution = UIStackViewDistributionFillEqually;
         bottomStack.spacing = 20;
         [self addSubview:bottomStack];
+        
+        UIStackView *leftButtons = [[UIStackView alloc] initWithArrangedSubviews:@[self.backButton, self.resetButton]];
+        leftButtons.translatesAutoresizingMaskIntoConstraints = NO;
+        leftButtons.distribution = UIStackViewDistributionFillEqually;
+        [self addSubview:leftButtons];
     
-        UIStackView *topStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.resetButton, self.targetLabel, self.countdownLabel]];
+        UIStackView *topStack = [[UIStackView alloc] initWithArrangedSubviews:@[leftButtons, self.targetLabel, self.countdownLabel]];
         topStack.translatesAutoresizingMaskIntoConstraints = NO;
         topStack.distribution = UIStackViewDistributionFillEqually;
         [self addSubview:topStack];
