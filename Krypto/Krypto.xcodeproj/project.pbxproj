@@ -13,6 +13,8 @@
 		CC27DBD11DAC924C000D644F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC27DBCF1DAC924C000D644F /* LaunchScreen.storyboard */; };
 		CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */; };
 		CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */; };
+		CC58A5071DBBFFAE00C07DD6 /* RMDEasyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC58A5061DBBFFAE00C07DD6 /* RMDEasyViewController.m */; };
+		CC58A50A1DBBFFBA00C07DD6 /* RMDEasyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC58A5091DBBFFBA00C07DD6 /* RMDEasyView.m */; };
 		CC985D321DB83E2F000BB866 /* RMDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */; };
 		CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA767661DB188F200E51B9F /* RMDKryptoView.m */; };
 /* End PBXBuildFile section */
@@ -29,6 +31,10 @@
 		CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoViewController.m; sourceTree = "<group>"; };
 		CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoDeck.h; sourceTree = "<group>"; };
 		CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoDeck.m; sourceTree = "<group>"; };
+		CC58A5051DBBFFAE00C07DD6 /* RMDEasyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDEasyViewController.h; sourceTree = "<group>"; };
+		CC58A5061DBBFFAE00C07DD6 /* RMDEasyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDEasyViewController.m; sourceTree = "<group>"; };
+		CC58A5081DBBFFBA00C07DD6 /* RMDEasyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDEasyView.h; sourceTree = "<group>"; };
+		CC58A5091DBBFFBA00C07DD6 /* RMDEasyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDEasyView.m; sourceTree = "<group>"; };
 		CC985D301DB83E2F000BB866 /* RMDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDHomeViewController.h; sourceTree = "<group>"; };
 		CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDHomeViewController.m; sourceTree = "<group>"; };
 		CCA767651DB188F200E51B9F /* RMDKryptoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoView.h; sourceTree = "<group>"; };
@@ -71,6 +77,10 @@
 				CCA767661DB188F200E51B9F /* RMDKryptoView.m */,
 				CC27DBD81DAC9262000D644F /* RMDKryptoViewController.h */,
 				CC27DBD91DAC9262000D644F /* RMDKryptoViewController.m */,
+				CC58A5081DBBFFBA00C07DD6 /* RMDEasyView.h */,
+				CC58A5091DBBFFBA00C07DD6 /* RMDEasyView.m */,
+				CC58A5051DBBFFAE00C07DD6 /* RMDEasyViewController.h */,
+				CC58A5061DBBFFAE00C07DD6 /* RMDEasyViewController.m */,
 				CC985D301DB83E2F000BB866 /* RMDHomeViewController.h */,
 				CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */,
 				CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */,
@@ -162,12 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC58A50A1DBBFFBA00C07DD6 /* RMDEasyView.m in Sources */,
 				CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */,
 				CC985D321DB83E2F000BB866 /* RMDHomeViewController.m in Sources */,
 				CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */,
 				CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */,
 				CC27DBC31DAC924C000D644F /* main.m in Sources */,
 				CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */,
+				CC58A5071DBBFFAE00C07DD6 /* RMDEasyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
