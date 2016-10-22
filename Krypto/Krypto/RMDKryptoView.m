@@ -81,17 +81,25 @@
         self.countdownLabel.text = @"00:00:00";
         [self addSubview:self.countdownLabel];
         
-        self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.doneButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self.doneButton addTarget:self.delegate action:@selector(stopTimer) forControlEvents:UIControlEventTouchUpInside];
         [self.doneButton setTitle:@"Krypto!" forState:UIControlStateNormal];
+        [self.doneButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [self.doneButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        self.doneButton.layer.borderColor = [UIColor blueColor].CGColor;
+        self.doneButton.layer.borderWidth = 2.0;
         [self addSubview:self.doneButton];
     
         self.cardLabels = @[card1, card2, card3, card4, card5, card6];
     
-        self.resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.resetButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+        [self.resetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.resetButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+//        self.resetButton.layer.borderColor = [UIColor whiteColor].CGColor;
+//        self.resetButton.layer.borderWidth = 2.0;
         [self.resetButton addTarget:self.delegate action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.resetButton];
     
@@ -110,10 +118,11 @@
         outerStack.translatesAutoresizingMaskIntoConstraints = NO;
         outerStack.axis = UILayoutConstraintAxisVertical;
         outerStack.distribution = UIStackViewDistributionFillEqually;
+        outerStack.spacing = 20;
         [self addSubview:outerStack];
     
         NSDictionary *views = @{@"stack": outerStack};
-        NSArray *vert = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[stack]-20-|"
+        NSArray *vert = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[stack]-20-|"
                                                                 options:0
                                                                 metrics:nil
                                                                   views:views];
