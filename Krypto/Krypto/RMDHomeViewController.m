@@ -8,6 +8,7 @@
 
 #import "RMDHomeViewController.h"
 #import "RMDKryptoViewController.h"
+#import "RMDEasyViewController.h"
 
 @interface RMDHomeViewController ()
 
@@ -24,11 +25,22 @@
     hardMode.frame = CGRectMake(20, self.view.frame.size.height / 4, self.view.frame.size.width - 40, 40);
     [hardMode addTarget:self action:@selector(startHardMode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:hardMode];
+    
+    UIButton *easyMode = [UIButton buttonWithType:UIButtonTypeSystem];
+    [easyMode setTitle:@"Easy Mode" forState:UIControlStateNormal];
+    easyMode.frame = CGRectMake(20, self.view.frame.size.height / 2, self.view.frame.size.width - 40, 40);
+    [easyMode addTarget:self action:@selector(startEasyMode) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:easyMode];
 }
 
 - (void)startHardMode {
     RMDKryptoViewController *hardKrypto = [[RMDKryptoViewController alloc] init];
     [self presentViewController:hardKrypto animated:YES completion:nil];
+}
+
+- (void)startEasyMode {
+    RMDEasyViewController *easyKrypto = [[RMDEasyViewController alloc] init];
+    [self presentViewController:easyKrypto animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
