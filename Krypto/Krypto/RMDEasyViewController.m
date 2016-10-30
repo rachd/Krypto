@@ -16,6 +16,7 @@
 @property (nonatomic, strong) RMDEasyView *easyView;
 @property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
+@property (nonatomic, strong) NSArray *cards;
 
 @end
 
@@ -30,6 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setCards];
+    [self updateAnswer];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -39,11 +41,20 @@
 - (void)setCards {
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
     self.easyView.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
-    NSArray *cards = [cardDict objectForKey:@"cards"];
+    self.cards = [cardDict objectForKey:@"cards"];
     for (int i = 0; i < 6; i++) {
         UILabel *label = [self.easyView.cardLabels objectAtIndex:i];
-        label.text = [NSString stringWithFormat:@"%@", [cards objectAtIndex:i]];
+        label.text = [NSString stringWithFormat:@"%@", [self.cards objectAtIndex:i]];
     }
+}
+
+- (void)updateAnswer {
+    int sum = 0;
+    for (int i = 0; i < 6; i++) {
+        sum = sum + [[self.cards objectAtIndex:i] intValue];
+    }
+    NSLog(@"sum %i", sum);
+    self.easyView.answerLabel.text = [NSString stringWithFormat:@"%i", sum];
 }
 
 - (void)reset {
@@ -51,6 +62,7 @@
     self.easyView.countdownLabel.text = @"00:00:00";
     self.secondsElapsed = 0;
     [self setCards];
+    [self updateAnswer];
     [self startTimer];
 }
 
