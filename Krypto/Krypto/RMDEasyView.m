@@ -111,7 +111,14 @@
         [self.backButton addTarget:self.delegate action:@selector(returnToLobby) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.backButton];
         
-        UIStackView *bottomStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6]];
+        UILabel *equals = [[UILabel alloc] init];
+        equals.translatesAutoresizingMaskIntoConstraints = NO;
+        equals.text = @"=";
+        equals.font = [UIFont systemFontOfSize:40];
+        equals.textColor = [UIColor blackColor];
+        [self addSubview:equals];
+        
+        UIStackView *bottomStack = [[UIStackView alloc] initWithArrangedSubviews:@[card1, card2, card3, card4, card5, card6, equals]];
         bottomStack.translatesAutoresizingMaskIntoConstraints = NO;
         bottomStack.distribution = UIStackViewDistributionFillEqually;
         bottomStack.spacing = 20;
