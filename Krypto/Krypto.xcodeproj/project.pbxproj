@@ -17,6 +17,7 @@
 		CC58A50A1DBBFFBA00C07DD6 /* RMDEasyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC58A5091DBBFFBA00C07DD6 /* RMDEasyView.m */; };
 		CC985D321DB83E2F000BB866 /* RMDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */; };
 		CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA767661DB188F200E51B9F /* RMDKryptoView.m */; };
+		CCDF45991DCD6F4100A56246 /* RMDKryptoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDF45981DCD6F4100A56246 /* RMDKryptoCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDHomeViewController.m; sourceTree = "<group>"; };
 		CCA767651DB188F200E51B9F /* RMDKryptoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoView.h; sourceTree = "<group>"; };
 		CCA767661DB188F200E51B9F /* RMDKryptoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoView.m; sourceTree = "<group>"; };
+		CCDF45971DCD6F4100A56246 /* RMDKryptoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDKryptoCollectionViewCell.h; sourceTree = "<group>"; };
+		CCDF45981DCD6F4100A56246 /* RMDKryptoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDKryptoCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				CC58A5061DBBFFAE00C07DD6 /* RMDEasyViewController.m */,
 				CC985D301DB83E2F000BB866 /* RMDHomeViewController.h */,
 				CC985D311DB83E2F000BB866 /* RMDHomeViewController.m */,
+				CCDF45971DCD6F4100A56246 /* RMDKryptoCollectionViewCell.h */,
+				CCDF45981DCD6F4100A56246 /* RMDKryptoCollectionViewCell.m */,
 				CC27DBDB1DAC9338000D644F /* RMDKryptoDeck.h */,
 				CC27DBDC1DAC9338000D644F /* RMDKryptoDeck.m */,
 				CC27DBCD1DAC924C000D644F /* Assets.xcassets */,
@@ -176,6 +181,7 @@
 				CC27DBC61DAC924C000D644F /* AppDelegate.m in Sources */,
 				CC985D321DB83E2F000BB866 /* RMDHomeViewController.m in Sources */,
 				CC27DBDD1DAC9338000D644F /* RMDKryptoDeck.m in Sources */,
+				CCDF45991DCD6F4100A56246 /* RMDKryptoCollectionViewCell.m in Sources */,
 				CCA767671DB188F200E51B9F /* RMDKryptoView.m in Sources */,
 				CC27DBC31DAC924C000D644F /* main.m in Sources */,
 				CC27DBDA1DAC9262000D644F /* RMDKryptoViewController.m in Sources */,
