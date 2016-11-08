@@ -36,6 +36,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.view addSubview:self.collection];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 0.1;
     [self.collection addGestureRecognizer:longPress];
 }
 
