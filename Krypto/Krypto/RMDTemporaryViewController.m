@@ -34,7 +34,26 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collection.delegate = self;
     self.collection.dataSource = self;
     [self.view addSubview:self.collection];
-    // Do any additional setup after loading the view.
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.collection addGestureRecognizer:longPress];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
+    switch (selector.state) {
+        case UIGestureRecognizerStateBegan:
+            [self.collection beginInteractiveMovementForItemAtIndexPath:[self.collection indexPathForItemAtPoint:[selector locationInView:self.collection]]];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.collection updateInteractiveMovementTargetPosition:[selector locationInView:selector.view]];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.collection endInteractiveMovement];
+            break;
+        default:
+            [self.collection cancelInteractiveMovement];
+            break;
+    }
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -62,6 +81,10 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
     }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
