@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RMDEasyViewController : UIViewController
+@interface RMDEasyViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
 - (void)setCards;
 

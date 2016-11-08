@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UILabel *countdownLabel;
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UILabel *answerLabel;
-@property (nonatomic, weak) id <RMDEasyViewDelegate> delegate;
+@property (nonatomic, strong) UICollectionView *collection;
+@property (nonatomic, weak) id <RMDEasyViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource> delegate;
 
 @end

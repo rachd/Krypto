@@ -9,6 +9,8 @@
 #import "RMDEasyViewController.h"
 #import "RMDKryptoDeck.h"
 #import "RMDEasyView.h"
+#import "RMDKryptoCollectionViewCell.h"
+
 
 @interface RMDEasyViewController ()
 
@@ -18,9 +20,13 @@
 @property (nonatomic, strong) NSTimer *secondsTimer;
 @property (nonatomic, strong) NSArray *cards;
 
+
 @end
 
 @implementation RMDEasyViewController
+
+static NSString * const reuseIdentifier = @"Cell";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,6 +98,33 @@
 
 - (void)returnToLobby {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    RMDKryptoCollectionViewCell *cell = (RMDKryptoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    switch (indexPath.row) {
+        case 0:
+            if (true) {
+                cell.label.text = @"Meow";
+            }
+            break;
+        case 1:
+            if (true) {
+                cell.label.text = @"Hisssss";
+            }
+            break;
+        default:
+            break;
+    }
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

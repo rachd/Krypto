@@ -7,8 +7,11 @@
 //
 
 #import "RMDEasyView.h"
+#import "RMDKryptoCollectionViewCell.h"
 
 @implementation RMDEasyView
+
+static NSString * const reuseIdentifier = @"Cell";
 
 - (instancetype)init {
     self = [super init];
@@ -117,6 +120,17 @@
         self.answerLabel.textColor = [UIColor blackColor];
         [self addSubview:self.answerLabel];
         
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        [flowLayout setItemSize:CGSizeMake(self.frame.size.width / 2 - 5, self.frame.size.height / 5)];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.frame.size.height / 3, self.frame.size.width, self.frame.size.height / 3) collectionViewLayout:flowLayout];
+        
+        [self.collection registerClass:[RMDKryptoCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+        self.collection.backgroundColor = [UIColor whiteColor];
+        self.collection.delegate = self.delegate;
+        self.collection.dataSource = self.delegate;
+        [self addSubview:self.collection];
+        
         UILabel *equals = [[UILabel alloc] init];
         equals.translatesAutoresizingMaskIntoConstraints = NO;
         equals.text = @"=";
@@ -140,7 +154,7 @@
         topStack.distribution = UIStackViewDistributionFillEqually;
         [self addSubview:topStack];
         
-        UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, bottomStack, self.doneButton]];
+        UIStackView *outerStack = [[UIStackView alloc] initWithArrangedSubviews:@[topStack, self.collection, self.doneButton]];
         outerStack.translatesAutoresizingMaskIntoConstraints = NO;
         outerStack.axis = UILayoutConstraintAxisVertical;
         outerStack.distribution = UIStackViewDistributionFillEqually;
