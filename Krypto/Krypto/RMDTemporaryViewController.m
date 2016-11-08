@@ -27,7 +27,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setItemSize:CGSizeMake(self.view.frame.size.width / 6 - 10, self.view.frame.size.height / 3)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.collection = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+    self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height / 3, self.view.frame.size.width - 20, self.view.frame.size.height / 3) collectionViewLayout:flowLayout];
     
     [self.collection registerClass:[RMDKryptoCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.collection.backgroundColor = [UIColor whiteColor];
