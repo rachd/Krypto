@@ -20,6 +20,7 @@
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.numberOfLines = 0;
         self.label.lineBreakMode = NSLineBreakByWordWrapping;
+        self.label.font = [UIFont systemFontOfSize:30];
         [self.contentView addSubview:self.label];
     }
     return self;
