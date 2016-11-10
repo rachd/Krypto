@@ -40,6 +40,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setUpCardCollection];
     [self setUpAnswer];
     [self setUpTopRow];
+    [self setUpBottomRow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,6 +89,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)updateAnswer {
     [self.answerLabel setText:[NSString stringWithFormat:@"= %@", [self.cards valueForKeyPath:@"@sum.self"]]];
+}
+
+- (void)setUpBottomRow {
+    self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.doneButton.frame = CGRectMake(30, (self.view.frame.size.height / 3) * 2 + 20, self.view.frame.size.width - 60, self.view.frame.size.height / 3 - 40);
+    [self.doneButton addTarget:self action:@selector(stopTimer) forControlEvents:UIControlEventTouchUpInside];
+    [self.doneButton setTitle:@"Krypto!" forState:UIControlStateNormal];
+    [self.doneButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.doneButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    self.doneButton.layer.borderColor = [UIColor blueColor].CGColor;
+    self.doneButton.layer.borderWidth = 2.0;
+    [self.view addSubview:self.doneButton];
 }
 
 - (void)setUpTopRow {
