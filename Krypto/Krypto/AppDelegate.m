@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RMDHomeViewController.h"
-#import "RMDTemporaryViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,8 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //RMDHomeViewController *homeVC = [[RMDHomeViewController alloc] init];
-    RMDTemporaryViewController *homeVC = [[RMDTemporaryViewController alloc] init];
+    RMDHomeViewController *homeVC = [[RMDHomeViewController alloc] init];
     [self.window setRootViewController:homeVC];
     [self.window makeKeyAndVisible];
     return YES;

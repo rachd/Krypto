@@ -9,6 +9,7 @@
 #import "RMDHomeViewController.h"
 #import "RMDKryptoViewController.h"
 #import "RMDEasyViewController.h"
+#import "RMDTemporaryViewController.h"
 
 @interface RMDHomeViewController ()
 
@@ -39,7 +40,8 @@
 }
 
 - (void)startEasyMode {
-    RMDEasyViewController *easyKrypto = [[RMDEasyViewController alloc] init];
+    //RMDEasyViewController *easyKrypto = [[RMDEasyViewController alloc] init];
+    RMDTemporaryViewController *easyKrypto = [[RMDTemporaryViewController alloc] init];
     [self presentViewController:easyKrypto animated:YES completion:nil];
 }
 
