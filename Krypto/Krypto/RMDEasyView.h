@@ -17,7 +17,7 @@
 
 @end
 
-@interface RMDEasyView : UIView
+@interface RMDEasyView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UILabel *targetLabel;
 @property (nonatomic, strong) NSArray *cardLabels;
@@ -28,6 +28,6 @@
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UILabel *answerLabel;
 @property (nonatomic, strong) UICollectionView *collection;
-@property (nonatomic, weak) id <RMDEasyViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource> delegate;
+@property (nonatomic, weak) id <RMDEasyViewDelegate> delegate;
 
 @end

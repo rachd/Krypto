@@ -12,6 +12,14 @@
 @interface RMDTemporaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collection;
+@property (nonatomic, strong) UILabel *targetLabel;
+@property (nonatomic, strong) NSArray *cardLabels;
+@property (nonatomic, strong) UIButton *resetButton;
+@property (nonatomic, strong) UILabel *timerLabel;
+@property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UILabel *countdownLabel;
+@property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, strong) UILabel *answerLabel;
 
 @end
 
@@ -23,11 +31,24 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setUpCardCollection];
+    [self setUpTarget];
+}
+
+- (void)setUpTarget {
+    self.targetLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - self.view.frame.size.width / 7, self.view.frame.size.height / 3, self.view.frame.size.width / 7 - 10, self.view.frame.size.height / 3)];
+    self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.targetLabel.textAlignment = NSTextAlignmentCenter;
+    self.targetLabel.font = [UIFont systemFontOfSize:30];
+    self.targetLabel.text = @"= 17";
+    [self.view addSubview:self.targetLabel];
+}
+
+- (void)setUpCardCollection {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(self.view.frame.size.width / 6 - 10, self.view.frame.size.height / 3)];
+    [flowLayout setItemSize:CGSizeMake(self.view.frame.size.width / 7 - 10, self.view.frame.size.height / 3)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height / 3, self.view.frame.size.width - 20, self.view.frame.size.height / 3) collectionViewLayout:flowLayout];
+    self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height / 3, (self.view.frame.size.width / 7) * 6 - 20, self.view.frame.size.height / 3) collectionViewLayout:flowLayout];
     
     [self.collection registerClass:[RMDKryptoCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.collection.backgroundColor = [UIColor whiteColor];

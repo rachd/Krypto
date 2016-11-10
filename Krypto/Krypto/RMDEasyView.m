@@ -121,15 +121,19 @@ static NSString * const reuseIdentifier = @"Cell";
         [self addSubview:self.answerLabel];
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        [flowLayout setItemSize:CGSizeMake(self.frame.size.width / 2 - 5, self.frame.size.height / 5)];
+        [flowLayout setItemSize:CGSizeMake(self.frame.size.width / 6 - 10, self.frame.size.height / 3)];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.frame.size.height / 3, self.frame.size.width, self.frame.size.height / 3) collectionViewLayout:flowLayout];
+        self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 3, self.frame.size.width - 20, self.frame.size.height / 3) collectionViewLayout:flowLayout];
         
         [self.collection registerClass:[RMDKryptoCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
         self.collection.backgroundColor = [UIColor whiteColor];
-        self.collection.delegate = self.delegate;
-        self.collection.dataSource = self.delegate;
+        self.collection.delegate = self;
+        self.collection.dataSource = self;
         [self addSubview:self.collection];
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        longPress.minimumPressDuration = 0.1;
+        [self.collection addGestureRecognizer:longPress];
         
         UILabel *equals = [[UILabel alloc] init];
         equals.translatesAutoresizingMaskIntoConstraints = NO;
@@ -174,6 +178,58 @@ static NSString * const reuseIdentifier = @"Cell";
         [self addConstraints:horiz];
     }
     return self;
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
+    switch (selector.state) {
+        case UIGestureRecognizerStateBegan:
+            [self.collection beginInteractiveMovementForItemAtIndexPath:[self.collection indexPathForItemAtPoint:[selector locationInView:self.collection]]];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.collection updateInteractiveMovementTargetPosition:[selector locationInView:selector.view]];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.collection endInteractiveMovement];
+            break;
+        default:
+            [self.collection cancelInteractiveMovement];
+            break;
+    }
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 6;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    RMDKryptoCollectionViewCell *cell = (RMDKryptoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    switch (indexPath.row) {
+        case 0:
+            if (true) {
+                cell.label.text = @"Meow";
+            }
+            break;
+        case 1:
+            if (true) {
+                cell.label.text = @"Hisssss";
+            }
+            break;
+        default:
+            break;
+    }
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 5;
 }
 
 @end
