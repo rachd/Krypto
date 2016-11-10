@@ -8,6 +8,7 @@
 
 #import "RMDTemporaryViewController.h"
 #import "RMDKryptoCollectionViewCell.h"
+#import "RMDKryptoDeck.h"
 
 @interface RMDTemporaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UILabel *countdownLabel;
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UILabel *answerLabel;
+@property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
+@property (nonatomic, strong) NSArray *cards;
 
 @end
 
@@ -31,17 +34,23 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    self.kryptoDeck = [[RMDKryptoDeck alloc] init];
     [self setUpCardCollection];
-    [self setUpTarget];
+    [self setUpAnswer];
 }
 
-- (void)setUpTarget {
-    self.targetLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - self.view.frame.size.width / 7, self.view.frame.size.height / 3, self.view.frame.size.width / 7 - 10, self.view.frame.size.height / 3)];
-    self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.targetLabel.textAlignment = NSTextAlignmentCenter;
-    self.targetLabel.font = [UIFont systemFontOfSize:30];
-    self.targetLabel.text = @"= 17";
-    [self.view addSubview:self.targetLabel];
+- (void)viewWillAppear:(BOOL)animated {
+    [self setCards];
+    [self.collection reloadData];
+}
+
+- (void)setUpAnswer {
+    self.answerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - self.view.frame.size.width / 7, self.view.frame.size.height / 3, self.view.frame.size.width / 7 - 10, self.view.frame.size.height / 3)];
+    self.answerLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.answerLabel.textAlignment = NSTextAlignmentCenter;
+    self.answerLabel.font = [UIFont systemFontOfSize:30];
+    self.answerLabel.text = @"= 17";
+    [self.view addSubview:self.answerLabel];
 }
 
 - (void)setUpCardCollection {
@@ -59,6 +68,14 @@ static NSString * const reuseIdentifier = @"Cell";
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPress.minimumPressDuration = 0.1;
     [self.collection addGestureRecognizer:longPress];
+}
+
+- (void)setCards {
+    NSDictionary *cardDict = [self.kryptoDeck pickCards];
+    NSLog(@"cardDict %@", cardDict);
+    //self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
+    self.cards = [cardDict objectForKey:@"cards"];
+    [self.answerLabel setText:[NSString stringWithFormat:@"= %@", [self.cards valueForKeyPath:@"@sum.self"]]];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
@@ -88,20 +105,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RMDKryptoCollectionViewCell *cell = (RMDKryptoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    switch (indexPath.row) {
-        case 0:
-            if (true) {
-                cell.label.text = @"Meow";
-            }
-            break;
-        case 1:
-            if (true) {
-                cell.label.text = @"Hisssss";
-            }
-            break;
-        default:
-            break;
-    }
+    NSLog(@"%@", [NSString stringWithFormat:@"%@", [self.cards objectAtIndex:indexPath.row]]);
+    cell.label.text = [NSString stringWithFormat:@"%@", [self.cards objectAtIndex:indexPath.row]];
     return cell;
 }
 
