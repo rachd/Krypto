@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UILabel *answerLabel;
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
 @property (nonatomic, strong) NSArray *cards;
+@property (nonatomic) NSTimeInterval secondsElapsed;
+@property (nonatomic, strong) NSTimer *secondsTimer;
 
 @end
 
@@ -33,15 +35,21 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor cyanColor];
     self.kryptoDeck = [[RMDKryptoDeck alloc] init];
     [self setUpCardCollection];
     [self setUpAnswer];
+    [self setUpTopRow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setCards];
+    [self updateAnswer];
     [self.collection reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self startTimer];
 }
 
 - (void)setUpAnswer {
@@ -73,9 +81,43 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)setCards {
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
     NSLog(@"cardDict %@", cardDict);
-    //self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
+    self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
     self.cards = [cardDict objectForKey:@"cards"];
+    [self updateAnswer];
+}
+
+- (void)updateAnswer {
     [self.answerLabel setText:[NSString stringWithFormat:@"= %@", [self.cards valueForKeyPath:@"@sum.self"]]];
+}
+
+- (void)setUpTopRow {
+    self.resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.resetButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 3);
+    [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+    [self.resetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.resetButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.resetButton];
+    
+    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.backButton.frame = CGRectMake(self.view.frame.size.width / 6, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 3);
+    [self.backButton setTitle:@"Back" forState:UIControlStateNormal];
+    [self.backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.backButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.backButton addTarget:self action:@selector(returnToLobby) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.backButton];
+    
+    self.targetLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 3)];
+    self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.targetLabel.textAlignment = NSTextAlignmentCenter;
+    self.targetLabel.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:self.targetLabel];
+    
+    self.countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 3) * 2, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 3)];
+    self.countdownLabel.textAlignment = NSTextAlignmentCenter;
+    self.countdownLabel.font = [UIFont systemFontOfSize:30];
+    self.countdownLabel.text = @"00:00:00";
+    [self.view addSubview:self.countdownLabel];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
@@ -116,6 +158,43 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 5;
+}
+
+- (void)reset {
+    [self.secondsTimer invalidate];
+    self.countdownLabel.text = @"00:00:00";
+    self.secondsElapsed = 0;
+    [self setCards];
+    [self updateAnswer];
+    [self startTimer];
+}
+
+- (void)startTimer {
+    self.secondsTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                         target:self
+                                                       selector:@selector(updateLabel)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+- (void)stopTimer {
+    [self.secondsTimer invalidate];
+}
+
+- (void)updateLabel {
+    self.secondsElapsed ++;
+    self.countdownLabel.text = [self formatTime:self.secondsElapsed];
+}
+
+- (NSString *)formatTime:(int)totalSeconds {
+    int hours = totalSeconds / 3600;
+    int minutes = (totalSeconds / 60) % 60;
+    int seconds = totalSeconds % 60;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+}
+
+- (void)returnToLobby {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
