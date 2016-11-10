@@ -69,7 +69,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collection = [[UICollectionView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height / 3, (self.view.frame.size.width / 7) * 6 - 20, self.view.frame.size.height / 3) collectionViewLayout:flowLayout];
     
     [self.collection registerClass:[RMDKryptoCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    self.collection.backgroundColor = [UIColor whiteColor];
+    self.collection.backgroundColor = [UIColor cyanColor];
     self.collection.delegate = self;
     self.collection.dataSource = self;
     [self.view addSubview:self.collection];
@@ -180,6 +180,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setCards];
     [self updateAnswer];
     [self startTimer];
+    [self.collection reloadData];
 }
 
 - (void)startTimer {
