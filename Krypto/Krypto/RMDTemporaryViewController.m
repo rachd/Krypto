@@ -10,7 +10,7 @@
 #import "RMDKryptoCollectionViewCell.h"
 #import "RMDKryptoDeck.h"
 
-@interface RMDTemporaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface RMDTemporaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collection;
 @property (nonatomic, strong) UILabel *targetLabel;
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSArray *cards;
 @property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
+@property (nonatomic, strong) UIPickerView *operation1;
+@property (nonatomic, strong) NSArray *operationsArray;
 
 @end
 
@@ -41,11 +43,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setUpAnswer];
     [self setUpTopRow];
     [self setUpBottomRow];
+    [self setUpOperationsRow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setCards];
-    [self updateAnswer];
     [self.collection reloadData];
 }
 
@@ -81,14 +83,27 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setCards {
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
-    NSLog(@"cardDict %@", cardDict);
     self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
     self.cards = [cardDict objectForKey:@"cards"];
     [self updateAnswer];
 }
 
 - (void)updateAnswer {
-    [self.answerLabel setText:[NSString stringWithFormat:@"= %@", [self.cards valueForKeyPath:@"@sum.self"]]];
+    NSInteger total = [[self.cards objectAtIndex:0] integerValue];
+    NSLog(@"%ld", (long)total);
+    for (int i = 0; i < self.operationsArray.count; i++) {
+        NSString *operation = [self.operationsArray objectAtIndex:i];
+        if ([operation isEqualToString:@"+"]) {
+            total = total + [[self.cards objectAtIndex:(i + 1)] integerValue];
+        } else if ([operation isEqualToString:@"-"]) {
+            total = total - [[self.cards objectAtIndex:(i + 1)] integerValue];
+        } else if ([operation isEqualToString:@"*"]) {
+            total = total * [[self.cards objectAtIndex:(i + 1)] integerValue];
+        } else {
+            total = total / [[self.cards objectAtIndex:(i + 1)] integerValue];
+        }
+    }
+    [self.answerLabel setText:[NSString stringWithFormat:@"= %ld", (long)total]];
 }
 
 - (void)setUpBottomRow {
@@ -105,7 +120,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setUpTopRow {
     self.resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.resetButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 3);
+    self.resetButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 6);
     [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
     [self.resetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.resetButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
@@ -113,24 +128,65 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.view addSubview:self.resetButton];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(self.view.frame.size.width / 6, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 3);
+    self.backButton.frame = CGRectMake(self.view.frame.size.width / 6, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 6);
     [self.backButton setTitle:@"Back" forState:UIControlStateNormal];
     [self.backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.backButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.backButton addTarget:self action:@selector(returnToLobby) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     
-    self.targetLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 3)];
+    self.targetLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 6)];
     self.targetLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.targetLabel.textAlignment = NSTextAlignmentCenter;
     self.targetLabel.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.targetLabel];
     
-    self.countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 3) * 2, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 3)];
+    self.countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 3) * 2, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 6)];
     self.countdownLabel.textAlignment = NSTextAlignmentCenter;
     self.countdownLabel.font = [UIFont systemFontOfSize:30];
     self.countdownLabel.text = @"00:00:00";
     [self.view addSubview:self.countdownLabel];
+}
+
+- (void)setUpOperationsRow {
+    self.operationsArray = @[@"+", @"+", @"+", @"+", @"+"];
+    
+    self.operation1 = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 7 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
+    self.operation1.delegate = self;
+    self.operation1.dataSource = self;
+    [self.view addSubview:self.operation1];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 4;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    switch (row) {
+        case 0:
+            return @"+";
+            break;
+        case 1:
+            return @"-";
+            break;
+        case 2:
+            return @"*";
+            break;
+        case 3:
+            return @"/";
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
@@ -160,7 +216,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RMDKryptoCollectionViewCell *cell = (RMDKryptoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    NSLog(@"%@", [NSString stringWithFormat:@"%@", [self.cards objectAtIndex:indexPath.row]]);
     cell.label.text = [NSString stringWithFormat:@"%@", [self.cards objectAtIndex:indexPath.row]];
     return cell;
 }
