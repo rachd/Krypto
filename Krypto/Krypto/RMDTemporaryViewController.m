@@ -26,6 +26,7 @@
 @property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
 @property (nonatomic, strong) UIPickerView *operation1;
+@property (nonatomic, strong) UIPickerView *operation2;
 @property (nonatomic, strong) NSMutableArray *operationsArray;
 @property (nonatomic, strong) NSArray *operationOptions;
 
@@ -160,6 +161,11 @@ static NSString * const reuseIdentifier = @"Cell";
     self.operation1.dataSource = self;
     [self.view addSubview:self.operation1];
     
+    self.operation2 = [[UIPickerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 7) * 2 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
+    self.operation2.delegate = self;
+    self.operation2.dataSource = self;
+    [self.view addSubview:self.operation2];
+    
     self.operationOptions = @[@"+", @"-", @"*", @"/"];
 }
 
@@ -176,7 +182,11 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [self.operationsArray replaceObjectAtIndex:0 withObject:[self.operationOptions objectAtIndex:row]];
+    if (pickerView == self.operation1) {
+        [self.operationsArray replaceObjectAtIndex:0 withObject:[self.operationOptions objectAtIndex:row]];
+    } else {
+        [self.operationsArray replaceObjectAtIndex:1 withObject:[self.operationOptions objectAtIndex:row]];
+    }
     [self updateAnswer];
 }
 
