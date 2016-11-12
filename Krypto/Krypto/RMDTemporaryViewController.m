@@ -26,7 +26,8 @@
 @property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
 @property (nonatomic, strong) UIPickerView *operation1;
-@property (nonatomic, strong) NSArray *operationsArray;
+@property (nonatomic, strong) NSMutableArray *operationsArray;
+@property (nonatomic, strong) NSArray *operationOptions;
 
 @end
 
@@ -60,7 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.answerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.answerLabel.textAlignment = NSTextAlignmentCenter;
     self.answerLabel.font = [UIFont systemFontOfSize:30];
-    self.answerLabel.text = @"= 17";
+    self.answerLabel.text = @"= ";
     [self.view addSubview:self.answerLabel];
 }
 
@@ -94,7 +95,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)updateAnswer {
     NSInteger total = [[self.cards objectAtIndex:0] integerValue];
-    NSLog(@"%ld", (long)total);
     for (int i = 0; i < self.operationsArray.count; i++) {
         NSString *operation = [self.operationsArray objectAtIndex:i];
         if ([operation isEqualToString:@"+"]) {
@@ -153,12 +153,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)setUpOperationsRow {
-    self.operationsArray = @[@"+", @"+", @"-", @"+", @"+"];
+    self.operationsArray = [[NSMutableArray alloc] initWithArray:@[@"+", @"+", @"-", @"+", @"+"]];
     
     self.operation1 = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 7 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
     self.operation1.delegate = self;
     self.operation1.dataSource = self;
     [self.view addSubview:self.operation1];
+    
+    self.operationOptions = @[@"+", @"-", @"*", @"/"];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -170,27 +172,11 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    switch (row) {
-        case 0:
-            return @"+";
-            break;
-        case 1:
-            return @"-";
-            break;
-        case 2:
-            return @"*";
-            break;
-        case 3:
-            return @"/";
-            break;
-        default:
-            return @"";
-            break;
-    }
+    return [self.operationOptions objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
+    //[self.operationsArray replaceObjectAtIndex:i withObject:[pickerView titlefor]];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
