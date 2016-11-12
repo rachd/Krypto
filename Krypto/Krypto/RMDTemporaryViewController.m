@@ -27,6 +27,9 @@
 @property (nonatomic, strong) NSTimer *secondsTimer;
 @property (nonatomic, strong) UIPickerView *operation1;
 @property (nonatomic, strong) UIPickerView *operation2;
+@property (nonatomic, strong) UIPickerView *operation3;
+@property (nonatomic, strong) UIPickerView *operation4;
+@property (nonatomic, strong) UIPickerView *operation5;
 @property (nonatomic, strong) NSMutableArray *operationsArray;
 @property (nonatomic, strong) NSArray *operationOptions;
 
@@ -166,6 +169,21 @@ static NSString * const reuseIdentifier = @"Cell";
     self.operation2.dataSource = self;
     [self.view addSubview:self.operation2];
     
+    self.operation3 = [[UIPickerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 7) * 3 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
+    self.operation3.delegate = self;
+    self.operation3.dataSource = self;
+    [self.view addSubview:self.operation3];
+    
+    self.operation4 = [[UIPickerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 7) * 4 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
+    self.operation4.delegate = self;
+    self.operation4.dataSource = self;
+    [self.view addSubview:self.operation4];
+    
+    self.operation5 = [[UIPickerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 7) * 5 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
+    self.operation5.delegate = self;
+    self.operation5.dataSource = self;
+    [self.view addSubview:self.operation5];
+    
     self.operationOptions = @[@"+", @"-", @"*", @"/"];
 }
 
@@ -184,8 +202,14 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (pickerView == self.operation1) {
         [self.operationsArray replaceObjectAtIndex:0 withObject:[self.operationOptions objectAtIndex:row]];
-    } else {
+    } else if (pickerView == self.operation2) {
         [self.operationsArray replaceObjectAtIndex:1 withObject:[self.operationOptions objectAtIndex:row]];
+    } else if (pickerView == self.operation3) {
+        [self.operationsArray replaceObjectAtIndex:2 withObject:[self.operationOptions objectAtIndex:row]];
+    } else if (pickerView == self.operation4) {
+        [self.operationsArray replaceObjectAtIndex:3 withObject:[self.operationOptions objectAtIndex:row]];
+    } else {
+        [self.operationsArray replaceObjectAtIndex:4 withObject:[self.operationOptions objectAtIndex:row]];
     }
     [self updateAnswer];
 }
