@@ -160,7 +160,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)setUpOperationsRow {
-    self.operationsArray = [[NSMutableArray alloc] initWithArray:@[@"+", @"+", @"-", @"+", @"+"]];
+    self.operationsArray = [[NSMutableArray alloc] initWithArray:@[@"+", @"+", @"+", @"+", @"+"]];
     
     self.operation1 = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 7 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
     self.operation1.delegate = self;
