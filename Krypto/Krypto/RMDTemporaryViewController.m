@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UILabel *answerLabel;
 @property (nonatomic, strong) RMDKryptoDeck *kryptoDeck;
-@property (nonatomic, strong) NSArray *cards;
+@property (nonatomic, strong) NSMutableArray *cards;
 @property (nonatomic) NSTimeInterval secondsElapsed;
 @property (nonatomic, strong) NSTimer *secondsTimer;
 @property (nonatomic, strong) UIPickerView *operation1;
@@ -84,7 +84,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)setCards {
     NSDictionary *cardDict = [self.kryptoDeck pickCards];
     self.targetLabel.text = [NSString stringWithFormat:@"%@", [cardDict objectForKey:@"target"]];
-    self.cards = [cardDict objectForKey:@"cards"];
+    NSArray *cardArray = [cardDict objectForKey:@"cards"];
+    self.cards = [[NSMutableArray alloc] init];
+    for (int i = 0; i < cardArray.count; i++) {
+        [self.cards addObject:[NSNumber numberWithInteger:[[cardArray objectAtIndex:i] integerValue]]];
+    }
     [self updateAnswer];
 }
 
@@ -149,7 +153,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)setUpOperationsRow {
-    self.operationsArray = @[@"+", @"+", @"+", @"+", @"+"];
+    self.operationsArray = @[@"+", @"+", @"-", @"+", @"+"];
     
     self.operation1 = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 7 - 20, self.view.frame.size.height / 6, 40, self.view.frame.size.height / 6)];
     self.operation1.delegate = self;
@@ -221,7 +225,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    
+    NSNumber *movedObject = [self.cards objectAtIndex:sourceIndexPath.row];
+    [self.cards removeObjectAtIndex:sourceIndexPath.row];
+    [self.cards insertObject:movedObject atIndex:destinationIndexPath.row];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
