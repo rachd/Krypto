@@ -228,6 +228,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSNumber *movedObject = [self.cards objectAtIndex:sourceIndexPath.row];
     [self.cards removeObjectAtIndex:sourceIndexPath.row];
     [self.cards insertObject:movedObject atIndex:destinationIndexPath.row];
+    [self updateAnswer];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
