@@ -66,6 +66,9 @@ static NSString * const reuseIdentifier = @"Cell";
     self.answerLabel.textAlignment = NSTextAlignmentCenter;
     self.answerLabel.font = [UIFont systemFontOfSize:30];
     self.answerLabel.text = @"= ";
+    self.answerLabel.numberOfLines = 1;
+    self.answerLabel.minimumFontSize = 10;
+    self.answerLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:self.answerLabel];
 }
 
