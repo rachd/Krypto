@@ -176,7 +176,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    //[self.operationsArray replaceObjectAtIndex:i withObject:[pickerView titlefor]];
+    [self.operationsArray replaceObjectAtIndex:0 withObject:[self.operationOptions objectAtIndex:row]];
+    [self updateAnswer];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)selector {
