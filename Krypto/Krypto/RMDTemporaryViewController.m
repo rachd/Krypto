@@ -47,17 +47,12 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setUpCardCollection];
     [self setUpAnswer];
     [self setUpTopRow];
-    [self setUpBottomRow];
     [self setUpOperationsRow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setCards];
     [self.collection reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [self startTimer];
 }
 
 - (void)setUpAnswer {
@@ -117,18 +112,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.answerLabel setText:[NSString stringWithFormat:@"= %ld", (long)total]];
 }
 
-- (void)setUpBottomRow {
-    self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.doneButton.frame = CGRectMake(30, (self.view.frame.size.height / 3) * 2 + 20, self.view.frame.size.width - 60, self.view.frame.size.height / 3 - 40);
-    [self.doneButton addTarget:self action:@selector(stopTimer) forControlEvents:UIControlEventTouchUpInside];
-    [self.doneButton setTitle:@"Krypto!" forState:UIControlStateNormal];
-    [self.doneButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [self.doneButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-    self.doneButton.layer.borderColor = [UIColor blueColor].CGColor;
-    self.doneButton.layer.borderWidth = 2.0;
-    [self.view addSubview:self.doneButton];
-}
-
 - (void)setUpTopRow {
     self.resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.resetButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 6, self.view.frame.size.height / 6);
@@ -151,12 +134,6 @@ static NSString * const reuseIdentifier = @"Cell";
     self.targetLabel.textAlignment = NSTextAlignmentCenter;
     self.targetLabel.font = [UIFont systemFontOfSize:40];
     [self.view addSubview:self.targetLabel];
-    
-    self.countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 3) * 2, 0, self.view.frame.size.width / 3, self.view.frame.size.height / 6)];
-    self.countdownLabel.textAlignment = NSTextAlignmentCenter;
-    self.countdownLabel.font = [UIFont systemFontOfSize:30];
-    self.countdownLabel.text = @"00:00:00";
-    [self.view addSubview:self.countdownLabel];
 }
 
 - (void)setUpOperationsRow {
@@ -260,37 +237,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)reset {
-    [self.secondsTimer invalidate];
-    self.countdownLabel.text = @"00:00:00";
-    self.secondsElapsed = 0;
     [self setCards];
     [self updateAnswer];
-    [self startTimer];
     [self.collection reloadData];
-}
-
-- (void)startTimer {
-    self.secondsTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                         target:self
-                                                       selector:@selector(updateLabel)
-                                                       userInfo:nil
-                                                        repeats:YES];
-}
-
-- (void)stopTimer {
-    [self.secondsTimer invalidate];
-}
-
-- (void)updateLabel {
-    self.secondsElapsed ++;
-    self.countdownLabel.text = [self formatTime:self.secondsElapsed];
-}
-
-- (NSString *)formatTime:(int)totalSeconds {
-    int hours = totalSeconds / 3600;
-    int minutes = (totalSeconds / 60) % 60;
-    int seconds = totalSeconds % 60;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 
 - (void)returnToLobby {
