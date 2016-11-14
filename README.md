@@ -1,7 +1,8 @@
 # Krypto
 An iOS app of the game Krypto.
 
-Object: Use the four basic operations (addition, subtraction, multiplication, and division) 
+#Object
+Use the four basic operations (addition, subtraction, multiplication, and division) 
 on the six cards you are dealt to reach the value of the target card.
 
 #Easy Mode
