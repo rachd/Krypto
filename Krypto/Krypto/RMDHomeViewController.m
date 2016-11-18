@@ -10,6 +10,7 @@
 #import "RMDKryptoViewController.h"
 #import "RMDEasyViewController.h"
 #import "RMDTemporaryViewController.h"
+#import "RMDRulesViewController.h"
 
 @interface RMDHomeViewController ()
 
@@ -32,6 +33,11 @@
     easyMode.frame = CGRectMake(20, self.view.frame.size.height / 2, self.view.frame.size.width - 40, 40);
     [easyMode addTarget:self action:@selector(startEasyMode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:easyMode];
+    
+    UIButton *rulesButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    rulesButton.frame = CGRectMake(self.view.frame.size.width - 60, 20, 40, 40);
+    [rulesButton addTarget:self action:@selector(openRules) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rulesButton];
 }
 
 - (void)startHardMode {
@@ -45,6 +51,10 @@
     [self presentViewController:easyKrypto animated:YES completion:nil];
 }
 
+- (void)openRules {
+    RMDRulesViewController *rulesVC = [[RMDRulesViewController alloc] init];
+    [self presentViewController:rulesVC animated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
