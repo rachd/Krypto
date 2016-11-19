@@ -18,6 +18,29 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *closeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width - 65, 10, 50, 64)];
+    [closeButton addTarget:self action:@selector(closeRules) forControlEvents:UIControlEventTouchUpInside];
+    [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [self.view addSubview:closeButton];
+    
+    UIButton *creditsLabel = [UIButton buttonWithType:UIButtonTypeCustom];
+    [creditsLabel setTitle:@"Delete icon credits" forState:UIControlStateNormal];
+    [creditsLabel setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    creditsLabel.frame = CGRectMake(self.view.frame.size.width - 100, self.view.frame.size.height - 20, 100, 20);
+    creditsLabel.titleLabel.font = [UIFont systemFontOfSize:10];
+    [creditsLabel addTarget:self action:@selector(openCredits) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:creditsLabel];
+    
+}
+
+- (void)openCredits {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://icons8.com/web-app/46/Delete"]];
+
+}
+
+- (void)closeRules {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
