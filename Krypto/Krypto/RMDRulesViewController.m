@@ -32,6 +32,20 @@
     [creditsLabel addTarget:self action:@selector(openCredits) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:creditsLabel];
     
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 40)];
+    title.text = @"Rules to Kypto";
+    title.textAlignment = NSTextAlignmentCenter;
+    title.textColor = [UIColor blackColor];
+    title.font = [UIFont systemFontOfSize:30];
+    [self.view addSubview:title];
+    
+    UILabel *rules = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, self.view.frame.size.width - 40, self.view.frame.size.height - 100)];
+    rules.text = @"The objective of Krypto is to reach the target card's value by applying the four basic arithmetic operations (addition, subtraction, multiplication, and division) to the six playable cards. These cards can be used in any order.";
+    rules.textAlignment = NSTextAlignmentLeft;
+    rules.textColor = [UIColor blackColor];
+    rules.font = [UIFont systemFontOfSize:14];
+    rules.numberOfLines = 0;
+    [self.view addSubview:rules];
 }
 
 - (void)openCredits {
