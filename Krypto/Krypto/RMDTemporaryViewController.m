@@ -238,6 +238,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)reset {
     [self setCards];
+    [self.operationsArray setArray:@[@"+", @"+", @"+", @"+", @"+"]];
+    [self.operation1 selectRow:0 inComponent:0 animated:NO];
+    [self.operation2 selectRow:0 inComponent:0 animated:NO];
+    [self.operation3 selectRow:0 inComponent:0 animated:NO];
+    [self.operation4 selectRow:0 inComponent:0 animated:NO];
+    [self.operation5 selectRow:0 inComponent:0 animated:NO];
     [self updateAnswer];
     [self.collection reloadData];
 }
