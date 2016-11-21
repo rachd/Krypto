@@ -40,7 +40,7 @@
     [self.view addSubview:title];
     
     UILabel *rules = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, self.view.frame.size.width - 40, self.view.frame.size.height - 100)];
-    rules.text = @"The objective of Krypto is to reach the target card's value by applying the four basic arithmetic operations (addition, subtraction, multiplication, and division) to the six playable cards. These cards can be used in any order.";
+    rules.text = @"The objective of Krypto is to reach the target card's value by applying the four basic arithmetic operations (addition, subtraction, multiplication, and division) to the six playable cards. These cards can be used in any order.\n\nEasy mode allows you to rearrange the cards, displaying the result with each move.\n\nHard mode raises the challenege.  The cards cannot be moved until you declare Krypto.";
     rules.textAlignment = NSTextAlignmentLeft;
     rules.textColor = [UIColor blackColor];
     rules.font = [UIFont systemFontOfSize:14];
